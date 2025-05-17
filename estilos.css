@@ -1,0 +1,160 @@
+/* Tipografía principal del cuerpo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(to right, #c0eaff, #fcd6e8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    color: #333;
+  }
+  
+  /* Contenedor principal de la invitación */
+  .invitacion {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Título principal en fuente caligráfica */
+  .invitacion h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Subtítulos */
+  .invitacion h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6em;
+    color: #555;
+    margin-bottom: 25px;
+  }
+  
+  .invitacion h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4em;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  /* Elefantes con burbujas */
+  .elefantes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .elefante {
+    flex: 1 1 40%;
+    margin: 10px;
+    position: relative;
+  }
+  
+  .elefante img {
+    width: 130px;
+    height: auto;
+  }
+  
+  .burbuja {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .burbuja.azul {
+    background-color: #d0ecff;
+    color: #007acc;
+  }
+  
+  .burbuja.rosa {
+    background-color: #fcd6e8;
+    color: #d94f9c;
+  }
+  
+  /* Texto principal */
+  .invitacion p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  span.azul {
+    color: #3498db;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  span.rosa {
+    color: #e67eaa;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Detalles del evento */
+  .detalle-evento {
+    margin: 20px 0;
+    line-height: 1.6;
+    font-size: 1.05em;
+    color: #444;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  /* Apuestas y vestimenta */
+  .apuestas {
+    margin-top: 25px;
+  }
+  
+  .colores {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .colores div {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    text-align: left;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .color {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    border-radius: 4px;
+  }
+  
+  .color.azul {
+    background-color: #3498db;
+  }
+  
+  .color.rosa {
+    background-color: #e67eaa;
+  }
+  
+  /* Mensaje final */
+  .invitacion h2:last-of-type {
+    margin-top: 40px;
+    color: #2c3e50;
+  }
