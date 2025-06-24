@@ -1,52 +1,1804 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación Revelación de Género</title>
-  <link rel="stylesheet" href="estilos.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporte de Carga Nacional | CargaMax Logistics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #ff6b00;
+            --accent: #00a8e8;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(0, 86, 179, 0.9);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(0, 86, 179, 0.98);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .nav-cta {
+            background-color: var(--secondary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background-color: #e05d00;
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1602722053028-1c51a1a20695?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 12rem 0 8rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #e05d00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            z-index: 1;
+            margin-top: -50px;
+        }
+        
+        .stats:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+            animation: fadeIn 1s ease;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            background-color: rgba(0, 168, 232, 0.1);
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png'), white;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .service-price {
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: linear-gradient(to right, white 50%, var(--light) 50%);
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            display: block;
+        }
+        
+        .about-img:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(0, 86, 179, 0.2), rgba(0, 86, 179, 0.5));
+        }
+        
+        .about-content h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .about-features {
+            margin: 2rem 0;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .about-feature i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background-color: var(--primary);
+            color: white;
+            position: relative;
+        }
+        
+        .testimonials:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .testimonials .section-header {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonials .section-title {
+            color: white;
+        }
+        
+        .testimonials .section-title:after {
+            background: var(--secondary);
+        }
+        
+        .testimonials .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .testimonials-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-slide {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 0 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-content:before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+            border: 3px solid var(--secondary);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(0, 86, 179, 0.9)), url('https://images.unsplash.com/photo-1608889825103-eb2c9b4453d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-details p, .contact-details a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e05d00;
+            transform: translateY(-2px);
+        }
+        
+        /* Map */
+        .map {
+            height: 400px;
+            width: 100%;
+            background-color: #eee;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: #e05d00;
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-toggle:hover {
+            background-color: #004494;
+            transform: scale(1.1);
+        }
+        
+        .chatbot-toggle i {
+            font-size: 1.5rem;
+        }
+        
+        .chatbot-box {
+            width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-box.active {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .chatbot-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chatbot-body {
+            height: 400px;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+        }
+        
+        .chatbot-message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .chatbot-message.bot {
+            justify-content: flex-start;
+        }
+        
+        .chatbot-message.user {
+            justify-content: flex-end;
+        }
+        
+        .message-content {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            position: relative;
+        }
+        
+        .bot .message-content {
+            background-color: white;
+            color: #333;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user .message-content {
+            background-color: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background-color: white;
+            border-top: 1px solid #eee;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .chatbot-send {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-send:hover {
+            background-color: #004494;
+        }
+        
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .quick-reply {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-reply:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about {
+                background: white;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+            
+            .chatbot-box {
+                width: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .nav-cta {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .btn + .btn {
+                margin-top: 1rem;
+                margin-left: 0;
+            }
+            
+            .chatbot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .chatbot-toggle {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 8rem 0 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .chatbot-box {
+                width: 280px;
+                right: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="invitacion">
-    <h1>¡Un bebé viene en camino!</h1>
-    <h2>¿Lo descubrimos juntos?</h2>
-
-    <div class="elefantes">
-      <div class="elefante">
-        <div class="burbuja azul">¿Niño?</div>
-        <img src="imagenes/elefante azul.jpeg" alt="Elefante niño">
-      </div>
-      <div class="elefante">
-        <div class="burbuja rosa">¿Niña?</div>
-        <img src="imagenes/elefante rosa.jpeg" alt="Elefante niña">
-      </div>
-    </div>
-
-    <p>Papá y mamá están felices con mi llegada, y te invitan a descubrir si seré un <span class="azul">Príncipe</span> o una <span class="rosa">Princesa</span>.</p>
-
-    <div class="detalle-evento">
-      <p><strong>Sábado</strong> | <strong>21</strong> de <strong>junio</strong>, 2025 | <strong>3:00 p.m.</strong></p>
-      <p>Calle: José Vicente Villada #423</p>
-      <p>Barrio La Trinidad, San Cristóbal Huichochitlán</p>
-
-      <div class="apuestas">
-        <h3>¡Hagan sus apuestas!</h3>
-        <div class="colores">
-          <div><span class="color azul"></span> Si crees que es niño, lleva toallitas húmedas</div>
-          <div><span class="color rosa"></span> Si crees que es niña, lleva regalo sorpresa</div>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://via.placeholder.com/50x50?text=CM" alt="CargaMax Logo">
+                <div class="logo-text">
+                    CargaMax<span>Logistics</span>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#portfolio">Portafolio</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#reports">Informes</a></li>
+                <li><a href="#quote" class="nav-cta">Cotización</a></li>
+            </ul>
         </div>
-      </div>
+    </header>
 
-      <h3>Además, trae una prenda del color de tu apuesta:</h3>
-      <div class="colores">
-        <div><span class="color azul"></span> Azul</div>
-        <div><strong>O</strong></div>
-        <div><span class="color rosa"></span> Rosa</div>
-      </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Transporte de Carga en Toluca y Toda la República</h1>
+            <p>En CargaMax Logistics, ofrecemos servicios de transporte de carga en Toluca y cobertura a nivel nacional. Nos especializamos en soluciones logísticas seguras y eficientes para empresas que buscan puntualidad y profesionalismo.</p>
+            <div class="hero-btns">
+                <a href="#quote" class="btn btn-primary">Solicitar Cotización</a>
+                <a href="#services" class="btn btn-secondary">Nuestros Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-count="850">0</div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="120">0</div>
+                <div class="stat-label">Vehículos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="15">0</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="32">0</div>
+                <div class="stat-label">Estados Cubiertos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CargaMax Logistics: Su Solución Integral</h2>
+                <p class="section-subtitle">Ofrecemos los mejores servicios de transporte de carga con tecnología de punta y personal altamente calificado</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Flota Moderna</h3>
+                        <p>Contamos con una flota moderna y equipada para todo tipo de cargas, desde vehículos ligeros hasta tractocamiones de alto tonelaje.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Monitoreo 24/7</h3>
+                        <p>Sistema de monitoreo GPS en tiempo real para máxima seguridad de su mercancía durante todo el trayecto.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Puntualidad Garantizada</h3>
+                        <p>Cumplimiento puntual de entregas con nuestro sistema de logística avanzada y rutas optimizadas.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Seguridad Integral</h3>
+                        <p>Protocolos de seguridad implementados en cada etapa del transporte para proteger su carga.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Cobertura Nacional</h3>
+                        <p>Ofrecemos servicio a toda la república mexicana con una red logística confiable y eficiente.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Soporte Personalizado</h3>
+                        <p>Asesoría especializada y atención personalizada para cada uno de nuestros clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Soluciones logísticas adaptadas a las necesidades específicas de su empresa</p>
+            </div>
+            
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://www.credlix.com/_next/image?q=75&url=https%3A%2F%2Fblog.credlix.com%2Fwp-content%2Fuploads%2F2025%2F01%2Ftrucks.webp&w=3840" alt="Transporte terrestre">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Transporte Terrestre</h3>
+                        <p class="service-price">Desde $3,500 por tonelada</p>
+                        <p>Servicio de transporte de carga general y especializada en todo el territorio nacional.</p>
+                        <a href="#quote" class="btn btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://www.ewebtrans.com/blog/wp-content/uploads/2022/04/ART800-Transporte-refrigerado-transportar-alimentos-refrigerados-Cabecera.jpg" alt="Carga refrigerada">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Carga Refrigerada</h3>
+                        <p class="service-price">Desde $4,800 por tonelada</p>
+                        <p>Transporte especializado para productos perecederos con control de temperatura.</p>
+                        <a href="#quote" class="btn btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://www.transportesunion.com.ar/wp-content/uploads/2022/03/truck-union.png" alt="Carga peligrosa">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Carga Peligrosa</h3>
+                        <p class="service-price">Desde $5,200 por tonelada</p>
+                        <p>Transporte de materiales peligrosos con todas las certificaciones requeridas.</p>
+                        <a href="#quote" class="btn btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://seacargo.com/wp-content/uploads/2021/12/Carga-Sobredimensionada-o-Sobrepesada-Terrestre%E2%80%8B-1.jpg" alt="Carga sobredimensionada">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Carga Sobredimensionada</h3>
+                        <p class="service-price">Cotización personalizada</p>
+                        <p>Transporte de maquinaria pesada y cargas de dimensiones especiales con equipos especializados.</p>
+                        <a href="#quote" class="btn btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://thumbs.dreamstime.com/b/almac%C3%A9n-con-estanter%C3%ADas-de-almacenamiento-del-sistema-rack-pallet-territorio-log%C3%ADstica-el-interior-un-gran-mercanc%C3%ADas-en-198376299.jpg" alt="Almacenamiento">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Almacenamiento</h3>
+                        <p class="service-price">Desde $120/m² mensual</p>
+                        <p>Servicios de almacenaje con seguridad las 24 horas y control de inventario.</p>
+                        <a href="#quote" class="btn btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Cotizar</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://www.citylogistics.info/wp-content/uploads/2024/10/IMG_3086-ikea-byd-scaled.jpg" alt="Distribución última milla">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Distribución Última Milla</h3>
+                        <p class="service-price">Desde $800 por envío</p>
+                        <p>Servicio de reparto urbano con vehículos adaptados para entregas rápidas y eficientes.</p>
+                        <a href="#quote" class="btn btn-primary" style="margin-top: 1rem; padding: 0.5rem 1rem;">Cotizar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2 class="section-title">Sobre Nosotros</h2>
+                <p>Fundada en 2008, CargaMax Logistics se ha consolidado como una de las empresas líderes en transporte de carga en México, con sede principal en Toluca y centros logísticos estratégicos en 12 ciudades del país.</p>
+                <p>Nuestra misión es proporcionar soluciones logísticas integrales que agreguen valor a la cadena de suministro de nuestros clientes, garantizando seguridad, puntualidad y eficiencia en cada envío.</p>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Certificaciones</h4>
+                            <p>Contamos con todas las certificaciones requeridas para operar a nivel nacional e internacional.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Equipo Profesional</h4>
+                            <p>Personal altamente capacitado con más de 10 años de experiencia promedio en logística.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>Crecimiento Sostenido</h4>
+                            <p>Hemos crecido un 25% anual en los últimos 5 años gracias a la confianza de nuestros clientes.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#portfolio" class="btn btn-primary">Ver Nuestro Trabajo</a>
+            </div>
+            
+            <div class="about-img">
+                <img src="https://img.ccjdigital.com/files/base/randallreilly/all/image/2021/10/GettyImages_1125792179.61644cf99190f.png?auto=format%2Ccompress&fit=max&q=70&w=1200" alt="Nuestro equipo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">Más de 850 empresas confían en nuestros servicios de transporte</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>Hemos trabajado con CargaMax Logistics durante los últimos 3 años y su servicio ha sido impecable. La puntualidad en las entregas y el cuidado de nuestra mercancía nos ha permitido optimizar nuestra cadena de suministro.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Juan Pérez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Juan Pérez</h4>
+                            <p>Director de Logística, Grupo Industrial Monterrey</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="quote">
+        <div class="container cta-container">
+            <h2>¿Necesitas transportar tu mercancía con seguridad y puntualidad?</h2>
+            <p>Obtén una cotización personalizada en menos de 24 horas. Nuestro equipo está listo para asesorarte y ofrecerte la mejor solución logística para tus necesidades.</p>
+            <a href="#contact" class="btn btn-primary">Solicitar Cotización</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-subtitle">Estamos disponibles para responder tus preguntas y atender tus necesidades de transporte</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Oficina Central</h4>
+                            <p>Av. Tecnológico #1234, Parque Industrial Toluca 2000, Toluca, Estado de México</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Teléfonos</h4>
+                            <p><a href="tel:+522227891234">(722) 278 9123</a></p>
+                            <p><a href="tel:+528001234567">800 123 4567</a> (Toll Free)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Correo Electrónico</h4>
+                            <p><a href="mailto:contacto@cargamax.com">contacto@cargamax.com</a></p>
+                            <p><a href="mailto:cotizaciones@cargamax.com">cotizaciones@cargamax.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Horario de Atención</h4>
+                            <p>Lunes a Viernes: 8:00 am - 7:00 pm</p>
+                            <p>Sábados: 9:00 am - 2:00 pm</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envíanos un Mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Tu Nombre (requerido)</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Tu correo electrónico (requerido)</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Tu teléfono (requerido)</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" class="form-label">Servicio de interés</label>
+                            <select id="service" class="form-control">
+                                <option value="">Selecciona un servicio</option>
+                                <option value="transporte">Transporte Terrestre</option>
+                                <option value="refrigerado">Carga Refrigerada</option>
+                                <option value="peligrosa">Carga Peligrosa</option>
+                                <option value="sobredimensionada">Carga Sobredimensionada</option>
+                                <option value="almacenamiento">Almacenamiento</option>
+                                <option value="ultima-milla">Distribución Última Milla</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Tu mensaje para nosotros</label>
+                            <textarea id="message" class="form-control"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.381432124343!2d-99.6583829246869!3d19.34604838191537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d25f9a6a0a4f0d%3A0x7a1a1a1a1a1a1a1a!2sParque%20Industrial%20Toluca%202000!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
-    <h2>¡Te esperamos con mucho cariño!</h2>
-  </div>
-</body>
-</html>
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h3>Sobre CargaMax</h3>
+                <p>Líderes en transporte de carga en México desde 2008, ofreciendo soluciones logísticas integrales con tecnología de punta y personal altamente calificado.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Servicios</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Transporte Terrestre</a></li>
+                    <li><a href="#">Carga Refrigerada</a></li>
+                    <li><a href="#">Carga Peligrosa</a></li>
+                    <li><a href="#">Carga Sobredimensionada</a></li>
+                    <li><a href="#">Almacenamiento</a></li>
+                    <li><a href="#">Distribución Última Milla</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="#portfolio">Portafolio</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#reports">Informes</a></li>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Suscríbete</h3>
+                    <p>Recibe nuestras últimas noticias y promociones directamente en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 CargaMax Logistics. Todos los derechos reservados. | <a href="#" style="color: var(--secondary);">Aviso de Privacidad</a> | <a href="#" style="color: var(--secondary);">Términos y Condiciones</a></p>
+            </div>
+        </footer>
+
+        <!-- Chatbot -->
+        <div class="chatbot-container">
+            <div class="chatbot-toggle" id="chatbotToggle">
+                <i class="fas fa-robot"></i>
+            </div>
+            
+            <div class="chatbot-box" id="chatbotBox">
+                <div class="chatbot-header">
+                    <h3>Asistente CargaMax</h3>
+                    <button class="chatbot-close" id="chatbotClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="chatbot-body" id="chatbotBody">
+                    <div class="chatbot-message bot">
+                        <div class="message-content">
+                            ¡Hola! Soy el asistente virtual de CargaMax Logistics. ¿En qué puedo ayudarte hoy?
+                            <div class="quick-replies">
+                                <div class="quick-reply" data-reply="Cotización">Solicitar cotización</div>
+                                <div class="quick-reply" data-reply="Servicios">Conocer servicios</div>
+                                <div class="quick-reply" data-reply="Contacto">Hablar con un agente</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chatbot-input">
+                    <input type="text" id="chatbotInput" placeholder="Escribe tu mensaje...">
+                    <button class="chatbot-send" id="chatbotSend">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script>
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Header Scroll Effect
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Animate Stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            function animateStats() {
+                statNumbers.forEach(stat => {
+                    const target = +stat.getAttribute('data-count');
+                    const count = +stat.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        stat.innerText = Math.ceil(count + increment);
+                        setTimeout(animateStats, 1);
+                    } else {
+                        stat.innerText = target;
+                    }
+                });
+            }
+            
+            // Start animation when stats section is in view
+            const statsSection = document.querySelector('.stats');
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateStats();
+                    observer.unobserve(statsSection);
+                }
+            });
+            
+            observer.observe(statsSection);
+            
+            // Form Submission
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+                contactForm.reset();
+            });
+            
+            // Chatbot Functionality
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotBox = document.getElementById('chatbotBox');
+            const chatbotClose = document.getElementById('chatbotClose');
+            const chatbotBody = document.getElementById('chatbotBody');
+            const chatbotInput = document.getElementById('chatbotInput');
+            const chatbotSend = document.getElementById('chatbotSend');
+            
+            // Toggle chatbot visibility
+            chatbotToggle.addEventListener('click', () => {
+                chatbotBox.classList.toggle('active');
+            });
+            
+            chatbotClose.addEventListener('click', () => {
+                chatbotBox.classList.remove('active');
+            });
+            
+            // Send message function
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (message === '') return;
+                
+                // Add user message
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+                
+                // Bot response
+                setTimeout(() => {
+                    botResponse(message);
+                }, 1000);
+            }
+            
+            // Add message to chat
+            function addMessage(message, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chatbot-message ${sender}`;
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                contentDiv.textContent = message;
+                
+                messageDiv.appendChild(contentDiv);
+                chatbotBody.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }
+            
+            // Bot responses
+            function botResponse(userMessage) {
+                let response = '';
+                let quickReplies = [];
+                
+                userMessage = userMessage.toLowerCase();
+                
+                if (userMessage.includes('cotización') || userMessage.includes('cotizacion') || userMessage.includes('precio')) {
+                    response = 'Para solicitar una cotización, por favor visita nuestra sección de contacto o haz clic en "Solicitar Cotización" en nuestro sitio. ¿Te gustaría que te redirija allí?';
+                    quickReplies = [
+                        { text: 'Sí, por favor', reply: 'Sí' },
+                        { text: 'No, gracias', reply: 'No' }
+                    ];
+                } 
+                else if (userMessage.includes('servicio') || userMessage.includes('transport') || userMessage.includes('carga')) {
+                    response = 'Ofrecemos varios servicios de transporte: terrestre, refrigerado, carga peligrosa, sobredimensionada, almacenamiento y distribución última milla. ¿Te gustaría más información sobre alguno en particular?';
+                    quickReplies = [
+                        { text: 'Terrestre', reply: 'Transporte terrestre' },
+                        { text: 'Refrigerado', reply: 'Carga refrigerada' },
+                        { text: 'Peligrosa', reply: 'Carga peligrosa' }
+                    ];
+                }
+                else if (userMessage.includes('contact') || userMessage.includes('agente') || userMessage.includes('hablar')) {
+                    response = 'Puedes contactarnos al teléfono (722) 278 9123 o al correo contacto@cargamax.com. Nuestro horario es de Lunes a Viernes de 8:00 am a 7:00 pm. ¿Necesitas algo más?';
+                    quickReplies = [
+                        { text: 'No, gracias', reply: 'No' },
+                        { text: 'Sí, ayuda', reply: 'Sí' }
+                    ];
+                }
+                else if (userMessage.includes('hola') || userMessage.includes('buenos días') || userMessage.includes('buenas tardes')) {
+                    response = '¡Hola de nuevo! ¿En qué más puedo ayudarte hoy?';
+                    quickReplies = [
+                        { text: 'Cotización', reply: 'Cotización' },
+                        { text: 'Servicios', reply: 'Servicios' },
+                        { text: 'Contacto', reply: 'Contacto' }
+                    ];
+                }
+                else {
+                    response = 'Disculpa, no entendí tu consulta. ¿Podrías ser más específico? Por ejemplo, puedes preguntar sobre nuestros servicios, cotizaciones o información de contacto.';
+                    quickReplies = [
+                        { text: 'Cotización', reply: 'Cotización' },
+                        { text: 'Servicios', reply: 'Servicios' },
+                        { text: 'Contacto', reply: 'Contacto' }
+                    ];
+                }
+                
+                // Add bot message
+                addMessage(response, 'bot');
+                
+                // Add quick replies if any
+                if (quickReplies.length > 0) {
+                    const quickRepliesDiv = document.createElement('div');
+                    quickRepliesDiv.className = 'quick-replies';
+                    
+                    quickReplies.forEach(reply => {
+                        const replyBtn = document.createElement('div');
+                        replyBtn.className = 'quick-reply';
+                        replyBtn.textContent = reply.text;
+                        replyBtn.setAttribute('data-reply', reply.reply);
+                        quickRepliesDiv.appendChild(replyBtn);
+                    });
+                    
+                    const lastMessage = chatbotBody.lastChild.querySelector('.message-content');
+                    lastMessage.appendChild(quickRepliesDiv);
+                }
+                
+                // Scroll to bottom
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }
+            
+            // Send message on button click
+            chatbotSend.addEventListener('click', sendMessage);
+            
+            // Send message on Enter key
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // Quick reply functionality
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('quick-reply')) {
+                    const reply = e.target.getAttribute('data-reply');
+                    addMessage(reply, 'user');
+                    
+                    setTimeout(() => {
+                        botResponse(reply);
+                    }, 1000);
+                }
+            });
+        </script>
+    </body>
+    </html>
